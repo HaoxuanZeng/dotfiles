@@ -1,0 +1,119 @@
+{
+  "edit_predictions": {
+    "mode": "subtle",
+    "allow_data_collection": "no",
+    "provider": "copilot"
+  },
+  "languages": {
+    "Python": {
+      "prettier": {
+        "allowed": true
+      }
+    }
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "project_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "terminal_init_command": "",
+    "auto_compact": {
+      "threshold": "80%"
+    },
+    "default_profile": "ask",
+    "dock": "right",
+    "sidebar_side": "right",
+    "default_model": {
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+      "enable_thinking": true,
+      "effort": "max"
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "tabs": {
+    "close_position": "left"
+  },
+  "ui_font_family": "Hack Nerd Font",
+  "buffer_line_height": "comfortable",
+  "proxy": "",
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "agent_servers": {
+    "codex-acp": {
+      "default_config_options": {
+        "reasoning_effort": "xhigh",
+        "model": "gpt-6-sol",
+        "mode": "agent"
+      },
+      "type": "registry"
+    },
+    "pi-acp": {
+      "default_config_options": {
+        "thought_level": "max",
+        "model": "deepseek/deepseek-v4-flash"
+      },
+      "type": "registry"
+    },
+    "cursor": {
+      "default_config_options": {
+        "reasoning_effort": "xhigh",
+        "fast": "true",
+        "mode": "agent",
+        "model": "grok-4.7"
+      },
+      "type": "registry"
+    }
+  },
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": true,
+    "anthropic_retention": false
+  },
+  "vim_mode": true,
+  "terminal": {
+    "dock": "bottom",
+    "font_size": 14.0,
+    "font_family": "Hack Nerd Font",
+    "font_fallbacks": [
+      "Jetbrains Mono NL",
+      "FantasqueSansM Nerd Font Mono"
+    ]
+  },
+  "preview_tabs": {
+    "enabled": false
+  },
+  "minimap": {
+    "show": "always"
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 500
+    }
+  },
+  "buffer_font_fallbacks": [
+    "Menlo",
+    "Monaco",
+    "Courier New",
+    "monospace"
+  ],
+  "buffer_font_family": "Hack Nerd Font",
+  "soft_wrap": "editor_width",
+  "base_keymap": "VSCode",
+  "icon_theme": {
+    "mode": "light",
+    "light": "Material Icon Theme",
+    "dark": "Material Icon Theme"
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 14.0,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Houston"
+  }
+}
