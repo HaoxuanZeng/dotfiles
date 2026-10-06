@@ -39,5 +39,23 @@
     "bindings": {
       "cmd-shift-g": "git_panel::Toggle"
     }
+  },
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      "cmd-y": "editor::AcceptEditPrediction"
+    }
+  },
+  {
+    "context": "Editor && edit_prediction",
+    "unbind": {
+      "alt-tab": "editor::AcceptEditPrediction"
+    }
+  },
+  {
+    "context": "Editor && edit_prediction && edit_prediction_mode == eager && !showing_completions",
+    "unbind": {
+      "tab": "editor::AcceptEditPrediction"
+    }
   }
 ]

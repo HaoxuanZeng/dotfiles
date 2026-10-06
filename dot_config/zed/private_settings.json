@@ -1,11 +1,32 @@
 {
+  "inlay_hints": {
+    "enabled": true
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "disable_ai": false,
+  "prettier": {
+    "allowed": true
+  },
   "edit_predictions": {
+    "copilot": {
+      "enable_next_edit_suggestions": true,
+      "prediction_debounce": 0
+    },
+    "zed": {
+      "prediction_debounce": 0
+    },
     "mode": "subtle",
     "allow_data_collection": "no",
     "provider": "copilot"
   },
   "languages": {
     "Python": {
+      "inlay_hints": {
+        "enabled": true
+      },
+      "format_on_save": "on",
       "prettier": {
         "allowed": true
       }
@@ -18,13 +39,17 @@
     "dock": "left"
   },
   "agent": {
+    "button": true,
+    "flexible": true,
+    "threads_sidebar": {
+      "position": "right"
+    },
     "terminal_init_command": "",
     "auto_compact": {
       "threshold": "80%"
     },
     "default_profile": "ask",
     "dock": "right",
-    "sidebar_side": "right",
     "default_model": {
       "provider": "deepseek",
       "model": "deepseek-v4-pro",
@@ -47,8 +72,8 @@
     "codex-acp": {
       "default_config_options": {
         "reasoning_effort": "xhigh",
-        "model": "gpt-6-sol",
-        "mode": "agent"
+        "model": "gpt-6.1-sol",
+        "mode": "workspace-write"
       },
       "type": "registry"
     },
