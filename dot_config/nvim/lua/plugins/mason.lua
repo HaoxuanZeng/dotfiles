@@ -11,9 +11,14 @@ return {
       ensure_installed = {
         -- install language servers
         "lua-language-server",
+        "pyright",
+        "clangd",
+        "rust-analyzer",
+        "texlab",
 
         -- install formatters
         "stylua",
+        "ruff",
 
         -- install debuggers
         "debugpy",
@@ -21,6 +26,8 @@ return {
         -- install any other package
         "tree-sitter-cli",
       },
+      run_on_start = true,
+      auto_update = true,
     },
   },
 }

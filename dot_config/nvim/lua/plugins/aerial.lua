@@ -8,7 +8,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     keys = {
-      { "<leader>a", "<cmd>AerialToggle!<CR>", desc = "Aerial" },
+      { "<D-S-r>", "<Cmd>AerialToggle!<CR>", mode = { "n", "i" }, desc = "Aerial" },
     },
   },
 }

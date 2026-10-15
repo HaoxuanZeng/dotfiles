@@ -7,7 +7,7 @@ return {
     suggestion = {
       auto_trigger = true,
       keymap = {
-        accept = "<C-y>", -- handled by completion engine
+        accept = "<D-y>",
       },
     },
   },
