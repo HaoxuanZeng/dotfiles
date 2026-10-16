@@ -13,7 +13,6 @@ return {
           ["<Leader>R"] = false,
           ["<Leader>e"] = false,
           ["<Leader>o"] = false,
-          ["<Leader>h"] = false,
           ["<Leader>/"] = false,
           ["<C-S>"] = false,
           ["<C-Q>"] = false,
@@ -25,7 +24,7 @@ return {
           ["<C-Down>"] = false,
           ["<C-Left>"] = false,
           ["<C-Right>"] = false,
-          ["|"] = false,
+          ["|"] = { "<Cmd>vsplit #<CR>", desc = "Split Previous Buffer" },
           ["\\"] = false,
           gco = false,
           gcO = false,
@@ -58,13 +57,73 @@ return {
           ["<Leader>fm"] = { function() require("snacks").picker.man() end, desc = "Man pages" },
           ["<Leader>fM"] = { function() require("snacks").picker.marks() end, desc = "Marks" },
           ["<Leader>fn"] = { function() require("snacks").picker.notifications() end, desc = "Notifications" },
-          ["<Leader>fp"] = false, -- Cmd-O
           ["<Leader>fr"] = { function() require("snacks").picker.recent() end, desc = "Recent files" },
           ["<Leader>fR"] = {
             function() require("snacks").picker.recent { filter = { cwd = true } } end,
             desc = "Recent files (current directory)",
           },
           ["<Leader>fs"] = { function() require("snacks").picker.smart() end, desc = "Smart file search" },
+          ["<Leader>fS"] = {
+            function()
+              if vim.bo.buftype ~= "" or not vim.bo.modifiable then
+                vim.notify("Open an editable file to search snippets", vim.log.levels.INFO)
+                return
+              end
+              local ls = require "luasnip"
+              local buf, win = vim.api.nvim_get_current_buf(), vim.api.nvim_get_current_win()
+              local cursor = vim.api.nvim_win_get_cursor(win)
+              local changedtick = vim.api.nvim_buf_get_changedtick(buf)
+              local filetype = vim.bo.filetype
+              local available = ls.available(function(snippet) return snippet end)
+              local items, seen = {}, {}
+              for _, ft in ipairs(ls.get_snippet_filetypes()) do
+                for _, snippet in ipairs(available[ft] or {}) do
+                  if not seen[snippet] then
+                    seen[snippet] = true
+                    local description = snippet.description or snippet.name or ""
+                    if type(description) == "table" then description = table.concat(description, " ") end
+                    items[#items + 1] = {
+                      text = ("%s  %s  [%s]"):format(snippet.trigger, description, ft):gsub("\n", " "),
+                      snippet = snippet,
+                    }
+                  end
+                end
+              end
+              if #items == 0 then
+                vim.notify("No snippets available for " .. filetype, vim.log.levels.INFO)
+                return
+              end
+              table.sort(items, function(a, b) return a.text < b.text end)
+              return require("snacks").picker {
+                title = "Snippets: " .. filetype,
+                items = items,
+                format = "text",
+                matcher = { sort_empty = false },
+                layout = { preset = "default" },
+                preview = function(ctx)
+                  local ok, lines = pcall(ctx.item.snippet.get_docstring, ctx.item.snippet)
+                  ctx.preview:reset()
+                  ctx.preview:set_lines(ok and lines or { "Snippet preview unavailable" })
+                  ctx.preview:highlight { ft = filetype }
+                end,
+                confirm = function(picker, item)
+                  picker:close()
+                  if not item then return end
+                  vim.schedule(function()
+                    if not vim.api.nvim_win_is_valid(win) or vim.api.nvim_win_get_buf(win) ~= buf then return end
+                    if vim.api.nvim_buf_get_changedtick(buf) ~= changedtick then
+                      vim.notify("File changed; reopen the snippet picker before inserting", vim.log.levels.WARN)
+                      return
+                    end
+                    vim.api.nvim_set_current_win(win)
+                    vim.api.nvim_win_set_cursor(win, cursor)
+                    ls.snip_expand(item.snippet, { pos = { cursor[1] - 1, cursor[2] } })
+                  end)
+                end,
+              }
+            end,
+            desc = "Snippets",
+          },
           ["<Leader>ft"] = {
             function()
               require("lazy").load { plugins = { "todo-comments.nvim" } }
@@ -310,6 +369,10 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
+      filesystem = {
+        bind_to_cwd = true,
+        follow_current_file = { enabled = false },
+      },
       window = {
         mappings = {
           T = "none",

@@ -11,6 +11,13 @@ return {
     opts = {
       enable_autosnippets = true,
       update_events = "TextChanged,TextChangedI",
-    }
+    },
+  },
+
+  {
+    "danymat/neogen",
+    opts = {
+      snippet_engine = "luasnip",
+    },
   },
 }
