@@ -1,0 +1,115 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "auto",
+    "source": "arch",
+    "padding": {
+      "top": 0,
+      "right": 3,
+    },
+    "color": {
+      "1": "#00daef",
+      "2": "#4bf3c8",
+    },
+  },
+  "display": {
+    "separator": " : ",
+    "key": {
+      "width": 0,
+    },
+    "color": {
+      "keys": "#00daef",
+      "title": "#4bf3c8",
+      "output": "#eef0f9",
+      "separator": "#858b98",
+    },
+    "percent": {
+      "color": {
+        "green": "#4bf3c8",
+        "yellow": "#fbc23b",
+        "red": "#f4587e",
+      },
+    },
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "   ╭─────────────────────────────────────────╮",
+      "outputColor": "#545864",
+    },
+    {
+      "type": "os",
+      "key": "     󰣇 OS      ",
+    },
+    {
+      "type": "host",
+      "key": "      Device  ",
+      "format": "{name}",
+    },
+    {
+      "type": "kernel",
+      "key": "      Kernel  ",
+    },
+    {
+      "type": "packages",
+      "key": "     󰏖 Packages",
+    },
+    {
+      "type": "terminal",
+      "key": "     󰞷 Terminal",
+    },
+    {
+      "type": "wm",
+      "key": "     󱂬 WM      ",
+    },
+    {
+      "type": "custom",
+      "format": "   ╰─────────────────────────────────────────╯",
+      "outputColor": "#545864",
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "   ╭─────────────────────────────────────────╮",
+      "outputColor": "#545864",
+    },
+    {
+      "type": "cpu",
+      "key": "      CPU     ",
+      "format": "lua:local n = (...).name:gsub('^%d+%a+ Gen ', ''):gsub('%(R%)', ''):gsub('%(TM%)', ''); return n",
+    },
+    {
+      "type": "gpu",
+      "key": "      GPU     ",
+      "format": "{name}",
+    },
+    {
+      "type": "memory",
+      "key": "     󰍛 Memory  ",
+    },
+    {
+      "type": "battery",
+      "key": "     󰁹 Battery ",
+    },
+    {
+      "type": "display",
+      "key": "     󰹑 Display ",
+      "format": "{width}x{height} @ {refresh-rate} Hz",
+    },
+    {
+      "type": "uptime",
+      "key": "     󰅐 Uptime  ",
+    },
+    {
+      "type": "custom",
+      "format": "   ╰─────────────────────────────────────────╯",
+      "outputColor": "#545864",
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "     {##4bf3c8}● {##00daef}● {##00daef}● {##ffd493}● {##acafff}● {##cc75f4}● {##f4587e}● {##fbc23b}●{#}",
+    },
+    "break",
+  ],
+}
