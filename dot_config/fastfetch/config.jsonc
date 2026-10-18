@@ -91,6 +91,7 @@
     {
       "type": "battery",
       "key": "     󰁹 Battery ",
+      "format": "{capacity} ({status})",
     },
     {
       "type": "display",
