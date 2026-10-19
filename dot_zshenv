@@ -1,0 +1,27 @@
+# PATH
+typeset -U path PATH
+path=(
+  "$HOME/bin"
+  "$HOME/.local/bin"
+  "$HOME"/Library/Python/*/bin(N-/nOn)
+  /opt/homebrew/bin(N-/)
+  /opt/homebrew/sbin(N-/)
+  /home/linuxbrew/.linuxbrew/bin(N-/)
+  /home/linuxbrew/.linuxbrew/sbin(N-/)
+  "$HOME"/.linuxbrew/bin(N-/)
+  "$HOME"/.linuxbrew/sbin(N-/)
+  /usr/local/bin
+  /usr/local/sbin
+  $path
+  "$HOME/.docker/bin"
+)
+export PATH
+
+# Rust
+[[ -r "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+# Editor
+export EDITOR=nvim
+
+# Locale
+export LANG=en_US.UTF-8
