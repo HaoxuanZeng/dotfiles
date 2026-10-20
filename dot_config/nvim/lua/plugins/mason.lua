@@ -2,6 +2,13 @@
 
 ---@type LazySpec
 return {
+  {
+    "mason-org/mason.nvim",
+    config = function(_, opts)
+      require("mason").setup(opts)
+      if vim.env.SSH_CONNECTION then vim.env.PATH = vim.env.HOME .. "/.local/bin:" .. vim.env.PATH end
+    end,
+  },
   -- use mason-tool-installer for automatically installing Mason packages
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",

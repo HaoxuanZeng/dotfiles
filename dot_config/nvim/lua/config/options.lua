@@ -1,3 +1,5 @@
+if vim.env.SSH_CONNECTION then vim.g.clipboard = "osc52" end
+
 ---@type LazySpec
 return {
   {
@@ -88,5 +90,15 @@ return {
         long_message_to_split = true,
       },
     },
+  },
+  {
+    "rebelot/heirline.nvim",
+    opts = function(_, opts)
+      table.insert(opts.statusline, 7, {
+        condition = function() return vim.g.remote_neovim_host == true end,
+        provider = function() return (" REMOTE: %s "):format(vim.uv.os_gethostname()) end,
+        hl = { bold = true },
+      })
+    end,
   },
 }
