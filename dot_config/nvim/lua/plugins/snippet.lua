@@ -8,6 +8,13 @@ return {
       "honza/vim-snippets",
     },
 
+    config = function(plugin, opts)
+      require "astronvim.plugins.configs.luasnip"(plugin, opts)
+      local math = require "snippets.math"
+      require("luasnip").add_snippets("tex", math)
+      require("luasnip").filetype_extend("markdown", { "tex" })
+    end,
+
     opts = {
       enable_autosnippets = true,
       update_events = "TextChanged,TextChangedI",
