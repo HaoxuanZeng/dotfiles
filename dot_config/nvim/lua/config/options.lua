@@ -60,6 +60,12 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
+      source_selector = {
+        sources = {
+          { source = "filesystem" },
+          { source = "git_status" },
+        },
+      },
       filesystem = {
         bind_to_cwd = true,
         follow_current_file = { enabled = false },

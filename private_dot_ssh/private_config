@@ -1,0 +1,7 @@
+# SSH multiplexing
+Host *
+  ControlMaster auto
+  ControlPersist 10m
+  ControlPath ~/.ssh/socket-%C
+  ServerAliveInterval 60
+  ServerAliveCountMax 5
