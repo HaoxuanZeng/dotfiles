@@ -31,6 +31,11 @@ alias nv="nvim"
 alias bt="btop"
 alias pdf="pdfterm"
 
+# row
+if command -v row >/dev/null 2>&1; then
+  source <(COMPLETE=zsh row)
+fi
+
 # Micromamba
 if (( ! $+functions[micromamba] )) && command -v micromamba >/dev/null 2>&1; then
   eval "$(micromamba shell hook --shell zsh)"
