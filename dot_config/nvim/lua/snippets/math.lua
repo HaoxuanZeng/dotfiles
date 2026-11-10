@@ -6,6 +6,26 @@ local snippets = {
   -- Math mode
   { trigger = "dm", replacement = "$$\n$1\n$$", options = "tAw" },
 
+  -- Math functions
+  { trigger = "sin", replacement = "\\sin", options = "mAw" },
+  { trigger = "cos", replacement = "\\cos", options = "mAw" },
+  { trigger = "tan", replacement = "\\tan", options = "mAw" },
+  { trigger = "asin", replacement = "\\arcsin", options = "mAw" },
+  { trigger = "acos", replacement = "\\arccos", options = "mAw" },
+  { trigger = "atan", replacement = "\\arctan", options = "mAw" },
+  { trigger = "log", replacement = "\\log", options = "mAw" },
+  { trigger = "ln", replacement = "\\ln", options = "mAw" },
+  { trigger = "exp", replacement = "\\exp", options = "mAw" },
+  { trigger = "max", replacement = "\\max", options = "mAw" },
+  { trigger = "min", replacement = "\\min", options = "mAw" },
+  { trigger = "arg", replacement = "\\arg", options = "mAw" },
+  { trigger = "det", replacement = "\\det", options = "mAw" },
+  { trigger = "dim", replacement = "\\dim", options = "mAw" },
+  { trigger = "ker", replacement = "\\ker", options = "mAw" },
+  { trigger = "gcd", replacement = "\\gcd", options = "mAw" },
+  { trigger = "sup", replacement = "\\sup_{$1}", options = "mAw" },
+  { trigger = "inf", replacement = "\\inf_{$1}", options = "mAw" },
+
   -- Greek letters
   { trigger = "alpha", replacement = "\\alpha", options = "mAw" },
   { trigger = "beta", replacement = "\\beta", options = "mAw" },
@@ -89,6 +109,27 @@ local snippets = {
   { trigger = "xx", replacement = "\\times", options = "mAw" },
   { trigger = "**", replacement = "\\cdot", options = "mA" },
 
+  { trigger = "ldot", replacement = "\\ldots", options = "mAw" },
+  { trigger = "cdot", replacement = "\\cdot", options = "mAw" },
+  { trigger = "vdot", replacement = "\\vdots", options = "mAw" },
+  { trigger = "ddot", replacement = "\\ddots", options = "mAw" },
+  { trigger = "circ", replacement = "\\circ", options = "mAw" },
+  { trigger = "times", replacement = "\\times", options = "mAw" },
+  { trigger = "div", replacement = "\\div", options = "mAw" },
+  { trigger = "pm", replacement = "\\pm", options = "mAw" },
+  { trigger = "mp", replacement = "\\mp", options = "mAw" },
+  { trigger = "oplus", replacement = "\\oplus", options = "mAw" },
+  { trigger = "otimes", replacement = "\\otimes", options = "mAw" },
+  { trigger = "cup", replacement = "\\cup", options = "mAw" },
+  { trigger = "cap", replacement = "\\cap", options = "mAw" },
+  { trigger = "setminus", replacement = "\\setminus", options = "mAw" },
+  { trigger = "subset", replacement = "\\subset", options = "mAw" },
+  { trigger = "supset", replacement = "\\supset", options = "mAw" },
+  { trigger = "subseteq", replacement = "\\subseteq", options = "mAw" },
+  { trigger = "supseteq", replacement = "\\supseteq", options = "mAw" },
+  { trigger = "inters", replacement = "\\bigcap_{$1}", options = "mAw" },
+  { trigger = "unions", replacement = "\\bigcup_{$1}", options = "mAw" },
+
   { trigger = "!=", replacement = "\\neq", options = "mA" },
   { trigger = ">=", replacement = "\\geq", options = "mA" },
   { trigger = "<=", replacement = "\\leq", options = "mA" },
@@ -117,7 +158,7 @@ local snippets = {
   { trigger = "brk", replacement = "\\braket{$1}{$2}", options = "mAw" },
 
   -- Environments
-  { trigger = "begin", replacement = "\\begin{$1}\n\t$0\n\\end{$1}", options = "Aw" },
+  { trigger = "beg", replacement = "\\begin{$1}\n\t$0\n\\end{$1}", options = "Aw" },
   { trigger = "pmat", replacement = "\\begin{pmatrix}\n\t$1\n\\end{pmatrix}", options = "mAw" },
   { trigger = "cases", replacement = "\\begin{cases}\n\t$1\n\\end{cases}", options = "mAw" },
 
@@ -134,7 +175,6 @@ local snippets = {
 }
 
 local ls = require "luasnip"
-local closing = { ["("] = ")", ["["] = "]", ["{"] = "}" }
 
 -- Get the context of the cursor as "math", "text" or "code"
 local function cursor_context()
@@ -165,14 +205,6 @@ local function to_snippet(s)
     return context == nil or cursor_context() == context
   end
 
-  -- Remove the trigger, plus the ")" autopairs added after "lr("
-  local function remove_trigger(_, _, match)
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-    local char_after = vim.api.nvim_get_current_line():sub(col + 1, col + 1)
-    local stop = closing[match:sub(-1)] == char_after and col + 1 or col
-    return { clear_region = { from = { row - 1, col - #match }, to = { row - 1, stop } } }
-  end
-
   -- LuaSnip treats \ as an escape, so double it; %1 becomes the regex capture
   local body = s.replacement:gsub("\\", "\\\\"):gsub("%%(%d)", "${LS_CAPTURE_%1}")
 
@@ -183,7 +215,6 @@ local function to_snippet(s)
     snippetType = has "A" and "autosnippet" or "snippet",
     hidden = has "A", -- autosnippets stay out of the completion menu
     condition = should_expand,
-    resolveExpandParams = remove_trigger,
   }, body)
 end
 
