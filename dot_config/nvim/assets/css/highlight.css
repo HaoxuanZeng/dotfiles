@@ -1,0 +1,182 @@
+.hljs {
+  display: block;
+  overflow-x: auto;
+  color: var(--furo-code-text);
+  background: var(--furo-code-background);
+}
+
+.hljs-keyword,
+.hljs-literal {
+  color: var(--furo-code-keyword);
+  font-weight: 700;
+}
+
+.hljs-operator {
+  color: var(--furo-code-operator);
+}
+
+.hljs-type {
+  color: var(--furo-code-type);
+  font-weight: var(--furo-code-type-weight);
+}
+
+.hljs-number {
+  color: var(--furo-code-number);
+}
+
+.hljs-string,
+.hljs-code {
+  color: var(--furo-code-string);
+}
+
+.hljs-char.escape_ {
+  color: var(--furo-code-string);
+  font-weight: var(--furo-code-escape-weight);
+}
+
+.hljs-regexp {
+  color: var(--furo-code-regexp);
+}
+
+.hljs-symbol {
+  color: var(--furo-code-symbol);
+}
+
+.hljs-built_in,
+.hljs-variable.language_ {
+  color: var(--furo-code-builtin);
+}
+
+.hljs-variable,
+.hljs-template-variable {
+  color: var(--furo-code-variable);
+}
+
+.hljs-variable.constant_ {
+  color: var(--furo-code-constant);
+}
+
+.hljs-title,
+.hljs-title.function_ {
+  color: var(--furo-code-function);
+}
+
+.hljs-title.class_,
+.hljs-selector-class {
+  color: var(--furo-code-class);
+  font-weight: var(--furo-code-class-weight);
+  text-decoration: var(--furo-code-class-decoration);
+}
+
+.hljs-attr,
+.hljs-selector-attr,
+.hljs-link {
+  color: var(--furo-code-attribute);
+}
+
+.hljs-attribute,
+.hljs-property,
+.hljs-params,
+.hljs-punctuation,
+.hljs-tag,
+.hljs-formula {
+  color: var(--furo-code-text);
+}
+
+.hljs-name,
+.hljs-selector-tag {
+  color: var(--furo-code-tag);
+  font-weight: 700;
+}
+
+.hljs-selector-id {
+  color: var(--furo-code-label);
+  font-weight: var(--furo-code-label-weight);
+}
+
+.hljs-selector-pseudo {
+  color: var(--furo-code-decorator);
+  font-weight: var(--furo-code-decorator-weight);
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--furo-code-comment);
+  font-style: italic;
+}
+
+.hljs-doctag {
+  color: var(--furo-code-doctag);
+  background: var(--furo-code-doctag-background);
+  font-style: normal;
+  font-weight: var(--furo-code-doctag-weight);
+}
+
+.hljs-meta,
+.hljs-template-tag {
+  color: var(--furo-code-meta);
+  font-weight: var(--furo-code-meta-weight);
+}
+
+.hljs-meta .hljs-keyword {
+  color: inherit;
+  font-weight: inherit;
+}
+
+.hljs-meta .hljs-string {
+  color: var(--furo-code-comment);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hljs-meta.prompt_ {
+  color: var(--furo-code-prompt);
+  font-weight: var(--furo-code-prompt-weight);
+}
+
+.hljs-subst {
+  color: var(--furo-code-interpolation);
+  font-style: var(--furo-code-interpolation-style);
+}
+
+.hljs-section {
+  color: var(--furo-code-heading);
+  font-weight: 700;
+}
+
+.hljs-bullet {
+  color: var(--furo-code-subheading);
+  font-weight: var(--furo-code-subheading-weight);
+  text-decoration: var(--furo-code-subheading-decoration);
+}
+
+.hljs-addition {
+  color: var(--furo-code-addition);
+}
+
+.hljs-deletion {
+  color: var(--furo-code-deletion);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: 700;
+}
+
+.hljs-error {
+  color: var(--furo-code-error);
+  background: var(--furo-code-error-background);
+  border: var(--furo-code-error-border-width) solid var(--furo-code-error-border);
+}
+
+.hljs-exception {
+  color: var(--furo-code-exception);
+}
+
+.hljs-symbol.entity_ {
+  color: var(--furo-code-entity);
+  font-weight: var(--furo-code-entity-weight);
+}

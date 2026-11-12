@@ -22,6 +22,7 @@ return {
         "clangd",
         "rust-analyzer",
         "texlab",
+        "taplo",
 
         -- install formatters
         "stylua",
