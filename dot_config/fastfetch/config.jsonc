@@ -1,5 +1,5 @@
 {
-  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "$schema": "https://raw.githubusercontent.com/fastfetch-cli/fastfetch/2.57.1/doc/json_schema.json",
   "logo": {
     "type": "auto",
     "padding": {
@@ -36,59 +36,69 @@
   "modules": [
     {
       "type": "custom",
-      "format": "lua:dofile('/Users/zenghx/.config/fastfetch/format.lua'); return ff_border(true)",
+      "format": "   ╭───────────────────────────────────────────╮",
       "outputColor": "#545864",
     },
     {
       "type": "os",
       "key": "     {icon} OS      ",
-      "format": "lua:local a = ...; return ff_pair(a.name, ' ' .. a.versionId .. ' (' .. a.arch .. ')')",
+      "format": "{name:-9}{?version-id} {version-id:-7}{?}{?arch} ({arch:6}){?}",
     },
     {
       "type": "host",
       "key": "      Device  ",
-      "format": "lua:return ff_host(...)",
+      "format": "{name:-27}",
     },
     {
       "type": "kernel",
       "key": "      Kernel  ",
-      "format": "lua:local a = ...; return ff_pair(a.sysname, ' ' .. a.release)",
+      "format": "{sysname:-7} {release:-18}",
     },
     {
       "type": "packages",
       "key": "     󰏖 Packages",
-      "format": "{brew} brew / {brew-cask} cask",
+      "format": "{all:10} total",
     },
     {
       "type": "terminal",
       "key": "     󰞷 Terminal",
-      "format": "lua:local a = ...; return ff_pair(a.prettyName, a.version ~= '' and (' ' .. a.version) or '')",
+      "format": "{pretty-name:-15}{?version} {version:-10}{?}",
     },
     {
       "type": "wm",
       "key": "     󱂬 WM      ",
-      "format": "lua:return ff_fit((...).prettyName)",
+      "format": "{pretty-name:-27}",
     },
     {
       "type": "custom",
-      "format": "lua:return ff_border(false)",
+      "format": "   ╰───────────────────────────────────────────╯",
       "outputColor": "#545864",
     },
     "break",
     {
       "type": "custom",
-      "format": "lua:return ff_border(true)",
+      "format": "   ╭───────────────────────────────────────────╮",
       "outputColor": "#545864",
     },
     {
       "type": "cpu",
       "key": "      CPU     ",
-      "format": "lua:return ff_cpu(...)",
+      "format": "{name:-27}",
+    },
+    {
+      "type": "cpu",
+      "key": "      Cores   ",
+      "format": "{cores-physical:5}C/{cores-logical:5}T{?freq-max} @ {freq-max:8}{?}{/freq-max}{?freq-base} @ {freq-base:8}{?}{/}",
     },
     {
       "type": "gpu",
       "key": "      GPU     ",
-      "format": "lua:return ff_gpu(...)",
+      "format": "{name:-27}",
+    },
+    {
+      "type": "gpu",
+      "key": "      GPU Info",
+      "format": "{?core-count}{core-count:6} cores{?}{/core-count}{type:-11}{/}{?platform-api} @ {platform-api:-8}{?}",
     },
     {
       "type": "memory",
@@ -117,7 +127,7 @@
     },
     {
       "type": "custom",
-      "format": "lua:return ff_border(false)",
+      "format": "   ╰───────────────────────────────────────────╯",
       "outputColor": "#545864",
     },
     "break",
